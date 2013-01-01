@@ -19,7 +19,8 @@ class DiscussionGroupsController < ApplicationController
 
   def create
     @group = DiscussionGroup.create!(params[:discussion_group])
-    redirect_to root_path
+    flash[:notice] = "Group Created"
+    redirect_to admin_discussion_groups_path
   end
 
   def new
@@ -37,6 +38,13 @@ class DiscussionGroupsController < ApplicationController
     @group = DiscussionGroup.find(params[:id])
     @user = User.find(params[:user_id])
     @group.users << @user
+  end
+
+  def destroy
+    group = DiscussionGroup.find(params[:id])
+    group.destroy
+    flash[:notice] = "Group Removed"
+    redirect_to admin_discussion_groups_path
   end
 
   private

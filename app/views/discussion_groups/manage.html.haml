@@ -3,14 +3,12 @@
 Permitted Users
 
 -unless @permitted_users.nil?
-  = @permitted_users.size
   %ul.permitted
     -@permitted_users.each do |user|
       =render :partial => "remove_user", :locals => {:user => user}
 
 Other Users
 
-= @other_users.size
 -unless @other_users.nil?
   %ul.non-permitted
     -@other_users.each do |user|
