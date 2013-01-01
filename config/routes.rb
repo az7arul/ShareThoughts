@@ -1,8 +1,11 @@
 ShareThoughts::Application.routes.draw do
+  get "discussion_groups/show"
+
   get "dashboard/index"
 
   devise_for :users
 
+  resources :discussion_groups, :only => [:show]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
