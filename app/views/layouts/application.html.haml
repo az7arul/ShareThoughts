@@ -1,6 +1,7 @@
 !!! 5
 %html(lang="en")
   %head
+    = javascript_include_tag "application"
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
@@ -27,9 +28,9 @@
             %span.icon-bar
           %a.brand(href="#") ShareThoughts
           .container.nav-collapse
-            %ul.nav
+            %ul.nav.row
               %li= link_to "Dashboard", dashboard_index_path
-              %li= link_to "Logout", destroy_user_session_path, :method => :delete
+              %li.offset7= link_to "Logout", destroy_user_session_path, :method => :delete
     .container
 
       .row
@@ -44,4 +45,4 @@
       Javascripts
       \==================================================
     / Placed at the end of the document so the pages load faster
-    = javascript_include_tag "application"
+

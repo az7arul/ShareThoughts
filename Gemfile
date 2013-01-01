@@ -16,6 +16,8 @@ gem 'jquery-rails'
 gem "mongoid", ">= 3.0.3"
 gem "devise", ">= 2.1.2"
 gem "haml-rails"
+gem "private_pub"
+gem 'thin'
 
 #gem "rspec-rails", ">= 2.11.0", :group => [:development, :test]
 #gem "capybara", ">= 1.1.2", :group => :test

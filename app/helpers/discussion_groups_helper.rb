@@ -1,0 +1,2 @@
+module DiscussionGroupsHelper
+end

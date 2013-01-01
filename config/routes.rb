@@ -1,4 +1,6 @@
 ShareThoughts::Application.routes.draw do
+  get "messages/create"
+
   get "discussion_groups/show"
 
   get "dashboard/index"

@@ -7,6 +7,7 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :discussion_groups
+  has_many :messages
 
   after_create :set_default_group
 

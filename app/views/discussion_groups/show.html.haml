@@ -1,0 +1,27 @@
+.span9
+  %h1=@group.name
+
+  .messages
+    - @messages.each do |message|
+      =render :partial => "discussion_groups/message", :locals => {:message => message}
+
+
+  =form_for Message.new, :remote => true  do |f|
+
+    = f.hidden_field :discussion_group_id, value: @group.id
+    = f.hidden_field :user_id, value: current_user.id
+    .row
+
+      = f.text_area :content, class: "span8", :id => "send_message", :rows => "2"
+      = f.submit 'Save', class: "span1"
+
+.span3
+  .well.sidebar-nav
+    %h3 Members
+    %ul.nav.nav-list
+      -@group.users.each do |user|
+        %li=user.full_name
+
+=subscribe_to "/#{@group.id}"
+
+
