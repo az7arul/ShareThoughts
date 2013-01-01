@@ -7,7 +7,19 @@ ShareThoughts::Application.routes.draw do
 
   devise_for :users
 
-  resources :discussion_groups, :only => [:show]
+  resources :discussion_groups, :only => [:show, :new, :create, :update] do
+    collection do
+      get :admin
+    end
+
+    member do
+      get :manage
+      post :remove_user
+      post :add_user
+    end
+  end
+
+  resources :messages, :only => [:create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

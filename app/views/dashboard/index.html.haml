@@ -7,6 +7,10 @@
     -@groups.each do |group|
       %li= link_to group.name, discussion_group_path(group)
 
+-if current_user.is_admin?
+  .span3
+    =link_to "Admin Panel", admin_discussion_groups_path
+
 
 
 

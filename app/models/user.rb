@@ -14,6 +14,7 @@ class User
 
   field :first_name, :type => String
   field :last_name, :type => String, :default => ""
+  field :admin, :type => Boolean, :default => false
 
 
   ## Database authenticatable
@@ -59,6 +60,10 @@ class User
 
   def set_default_group
     self.discussion_groups << DiscussionGroup.default
+  end
+
+  def is_admin?
+    admin
   end
 
 end

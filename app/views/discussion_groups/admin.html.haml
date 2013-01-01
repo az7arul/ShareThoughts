@@ -1,0 +1,8 @@
+Manage Groups
+
+%ul
+  -@groups.each do |g|
+    %li= link_to g.name, manage_discussion_group_path(g)
+
+
+=link_to "Create New Group", new_discussion_group_path
