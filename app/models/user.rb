@@ -8,6 +8,8 @@ class User
 
   has_and_belongs_to_many :discussion_groups
 
+  after_create :set_default_group
+
 
   field :first_name, :type => String
   field :last_name, :type => String, :default => ""
@@ -52,6 +54,10 @@ class User
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def set_default_group
+    self.discussion_groups << DiscussionGroup.get_default_group
   end
 
 end
