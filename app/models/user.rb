@@ -6,32 +6,34 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_and_belongs_to_many :discussion_groups
+
 
   field :first_name, :type => String
   field :last_name, :type => String, :default => ""
 
 
   ## Database authenticatable
-  field :email,              :type => String, :default => ""
+  field :email, :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
 
   validates_presence_of :email
   validates_presence_of :encrypted_password
   validates_presence_of :first_name
-  
+
   ## Recoverable
-  field :reset_password_token,   :type => String
+  field :reset_password_token, :type => String
   field :reset_password_sent_at, :type => Time
 
   ## Rememberable
   field :remember_created_at, :type => Time
 
   ## Trackable
-  field :sign_in_count,      :type => Integer, :default => 0
+  field :sign_in_count, :type => Integer, :default => 0
   field :current_sign_in_at, :type => Time
-  field :last_sign_in_at,    :type => Time
+  field :last_sign_in_at, :type => Time
   field :current_sign_in_ip, :type => String
-  field :last_sign_in_ip,    :type => String
+  field :last_sign_in_ip, :type => String
 
   ## Confirmable
   # field :confirmation_token,   :type => String
@@ -46,6 +48,7 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
 
   def full_name
     "#{first_name} #{last_name}"
