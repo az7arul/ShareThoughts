@@ -57,7 +57,7 @@ class User
   end
 
   def set_default_group
-    self.discussion_groups << DiscussionGroup.get_default_group
+    self.discussion_groups << DiscussionGroup.default
   end
 
 end
