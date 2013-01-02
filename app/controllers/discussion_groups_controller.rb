@@ -18,9 +18,10 @@ class DiscussionGroupsController < ApplicationController
   end
 
   def create
-    @group = DiscussionGroup.create!(params[:discussion_group])
-    flash[:notice] = "Group Created"
-    redirect_to admin_discussion_groups_path
+    @group = DiscussionGroup.new(params[:discussion_group])
+    redirect_with_message notice: 'Successfully create new group',
+                          alert: 'Failed to create new group',
+                          if: -> { @group.save }
   end
 
   def new
@@ -31,7 +32,6 @@ class DiscussionGroupsController < ApplicationController
     @group = DiscussionGroup.find(params[:id])
     @user = User.find(params[:user_id])
     @group.users.delete(@user)
-
   end
 
   def add_user
@@ -42,9 +42,9 @@ class DiscussionGroupsController < ApplicationController
 
   def destroy
     group = DiscussionGroup.find(params[:id])
-    group.destroy
-    flash[:notice] = "Group Removed"
-    redirect_to admin_discussion_groups_path
+    redirect_with_message notice: "Successfully created new group",
+                          alert: 'Failed to remove group',
+                          if: -> { group.destroy }
   end
 
   private

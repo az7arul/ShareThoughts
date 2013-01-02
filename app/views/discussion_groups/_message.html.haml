@@ -1,6 +1,7 @@
 .row
   .span2
-    =message.user.full_name
-  .span7
+    = message.user.full_name
+  .span6
     .well.well-small
-      =message.content
+      = simple_format message.content
+

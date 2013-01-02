@@ -2,10 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-li {
+.discussion_group li {
   padding-bottom: 5px;
   padding-top: 5px;
   list-style: none;
 }
 
-a.btn:visited {color: white;}
+.messages {
+  position: fixed;
+  height: 60%;
+  overflow-y: scroll;
+}
+
+.participants {
+  position: fixed;
+  right: 20px;
+}
+
+.message-box {
+  background: #fff;
+  padding: 20px 0 0 0;
+  border-top: 2px solid #ccc;
+
+  textarea {
+    background: #ccc;
+    &:hover, &:focus {
+      background: #fff;
+    }
+  }
+
+  .btn {
+    margin-top: -10px;
+  }
+
+}

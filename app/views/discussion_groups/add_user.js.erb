@@ -1,2 +1,2 @@
-$("ul.non-permitted li#<%= @user.id %>").remove();
-$("ul.permitted").append("<%= escape_javascript(render(:partial => "remove_user", :locals => {:user => @user})) %>")
+$(".non-permitted li#<%= @user.id %>").remove();
+$(".permitted").append("<%= escape_javascript(render("remove_user", :user => @user)) %>");

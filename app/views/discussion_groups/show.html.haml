@@ -1,25 +1,27 @@
-.span9
-  %h1=@group.name
+.page-header
+  %h1= @group.name
 
-  .messages
+.row
+  .messages.span9
     - @messages.each do |message|
-      =render :partial => "discussion_groups/message", :locals => {:message => message}
+      = render "discussion_groups/message", :message => message
 
+    .clearfix
 
-  =form_for Message.new, :remote => true  do |f|
+  .participants.span3
+    .well.sidebar-nav
+      %h3 Members
+      %ul.nav.nav-list
+        - @group.users.each do |user|
+          %li=user.full_name
 
-    = f.hidden_field :discussion_group_id, value: @group.id
-    .row
-      = f.text_area :content, class: "span8", :id => "send_message", :rows => "2"
-      = f.submit 'Send', class: "span2 btn btn-primary btn-mini"
+.navbar.navbar-fixed-bottom.message-box
+  .container
+    = form_for Message.new, :remote => true  do |f|
+      = f.hidden_field :discussion_group_id, value: @group.id
+      = f.text_area :content, :id => "send_message", :rows => "2", class: 'span9'
+      = f.submit 'Send', class: "btn btn-primary btn-large"
 
-.span3
-  .well.sidebar-nav
-    %h3 Members
-    %ul.nav.nav-list
-      -@group.users.each do |user|
-        %li=user.full_name
-
-=subscribe_to "/#{@group.id}"
+= subscribe_to "/#{@group.id}"
 
 

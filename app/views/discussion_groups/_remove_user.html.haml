@@ -1,4 +1,6 @@
-%li(id="#{user.id}")
+%li.without-style{id: user.id}
   .span4= user.full_name
-  = link_to " Remove", remove_user_discussion_group_path(@group, :user_id => user.id),
-   :method => :post, :remote => true, :class => "btn btn-danger btn-mini"
+  = link_to "Remove", remove_user_discussion_group_path(@group, :user_id => user.id),
+   :method => :post, :remote => true, :class => "btn btn-danger btn-small"
+
+  .clearfix

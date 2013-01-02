@@ -1,17 +1,26 @@
+.dashboard-home
+  .page-header
+    %h1 Available Groups
 
-.span9
-  %h1 Available Groups
+  %table.groups-list{'cell-spacing' => '6px'}
+    - @groups.each do |group|
+      %tr
+        %th{align: 'left'}= group.name
+        %td
+          = link_to "Join", discussion_group_path(group),
+                    :class => "btn btn-primary btn-small"
 
+          - if current_user.is_admin?
+            = link_to "Manage Participants", manage_discussion_group_path(group),
+                      :class => "btn btn-primary btn-mini"
 
-  %ul
-    -@groups.each do |group|
-      %li
-        %strong.span4= group.name
-        = link_to "join", discussion_group_path(group), :class => "btn btn-primary btn-mini"
+            = link_to "Destroy", discussion_group_path(group),
+                      :confirm => 'Are you sure?', :method => :delete,
+                      :class => "btn btn-danger btn-mini"
 
--if current_user.is_admin?
-  .span3
-    =link_to "Admin Panel", admin_discussion_groups_path, :class => "btn btn-panel btn-success"
+  - if current_user.is_admin?
+    %hr/
+    = link_to 'Create Group', new_discussion_group_path, class: 'btn'
 
 
 
