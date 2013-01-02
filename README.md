@@ -8,7 +8,7 @@ Usage
 =============
 
 ```
-git clone git@github.com:genweb2/ShareThoughts.git`
+git clone git@github.com:genweb2/ShareThoughts.git
 ```
 
 ```
