@@ -6,7 +6,7 @@
   %ul
     -@groups.each do |group|
       %li
-        %strong= group.name
+        %strong.span4= group.name
         = link_to "join", discussion_group_path(group), :class => "btn btn-primary btn-mini"
 
 -if current_user.is_admin?

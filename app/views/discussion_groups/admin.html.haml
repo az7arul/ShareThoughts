@@ -3,7 +3,7 @@ Manage Groups
 %ul
   -@groups.each do |g|
     %li
-      %strong= g.name
+      %strong.span3= g.name
       = link_to "Manage", manage_discussion_group_path(g), :class => "btn btn-primary btn-mini"
       = link_to "Destroy", discussion_group_path(g),
       :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger btn-mini"

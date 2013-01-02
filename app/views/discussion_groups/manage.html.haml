@@ -1,15 +1,21 @@
 %h1=@group.name
 
-Permitted Users
+.span6
+  %strong
+    Permitted Users
 
--unless @permitted_users.nil?
-  %ul.permitted
-    -@permitted_users.each do |user|
-      =render :partial => "remove_user", :locals => {:user => user}
+  -unless @permitted_users.nil?
+    .well.sidebar-nav
+      %ul.permitted
+        -@permitted_users.each do |user|
+          =render :partial => "remove_user", :locals => {:user => user}
 
-Other Users
+.span6
+  %strong
+    Other Users
 
--unless @other_users.nil?
-  %ul.non-permitted
-    -@other_users.each do |user|
-      =render :partial => "add_user", :locals => {:user => user}
+  -unless @other_users.nil?
+    .well.sidebar-nav
+      %ul.non-permitted
+        -@other_users.each do |user|
+          =render :partial => "add_user", :locals => {:user => user}
