@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
       @message.discussion_group = group
     end
 
-    group.save || raise("Invalid parameters")
+    @message.save || raise("Invalid parameters")
 
   end
 end
