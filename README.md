@@ -1,7 +1,7 @@
 ShareThoughts
 =============
 
-Share thoughts with in colleagues and interested external parties
+Share thoughts with  colleagues and interested external parties
 
 
 Usage
