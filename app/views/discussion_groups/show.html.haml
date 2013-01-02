@@ -9,9 +9,7 @@
   =form_for Message.new, :remote => true  do |f|
 
     = f.hidden_field :discussion_group_id, value: @group.id
-    = f.hidden_field :user_id, value: current_user.id
     .row
-
       = f.text_area :content, class: "span8", :id => "send_message", :rows => "2"
       = f.submit 'Send', class: "span2 btn btn-primary btn-mini"
 

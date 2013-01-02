@@ -1,6 +1,8 @@
 class DiscussionGroup
   include Mongoid::Document
 
+  attr_accessible :name
+
   field :name, :type => String
   field :default, :type => Boolean, :default => false
 
