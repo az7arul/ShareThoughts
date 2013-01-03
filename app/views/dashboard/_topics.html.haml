@@ -1,3 +1,9 @@
 %ul
   - topic.messages.each do |message|
-    %li.message-list= message.content
+    %li.message-list
+      %span.user-name
+        = message.user.full_name
+      %span.message-content
+        = " : #{message.content}"
+
+
