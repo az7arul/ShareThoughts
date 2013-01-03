@@ -1,8 +1,6 @@
 class TopicsController < ApplicationController
 
   before_filter :authenticate_user!
- # before_filter :ensure_admin!
-
 
   def create
     @topic = DiscussionGroup.new(params[:topic])
@@ -13,7 +11,8 @@ class TopicsController < ApplicationController
 
   def change_topic
     @group = DiscussionGroup.find(params[:group_id])
-    @group.topic.content = params[:topic]
+    topic = Topic.create!(content: params[:topic])
+    @group.topic = topic
     @group.save
   end
 end
