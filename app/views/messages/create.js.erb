@@ -3,6 +3,6 @@
   $(".messages").append("<%= escape_javascript(render(:partial => "discussion_groups/message", :locals => {:message => @message})) %>");
   $('#send_message').attr("value", "");
 
-  $('.messages').scrollTop(100000000000);
+  $('.messages').scrollTop($(document).height());
 <% end %>
 
