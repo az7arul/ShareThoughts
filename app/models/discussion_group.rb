@@ -3,7 +3,7 @@ class DiscussionGroup
 
   before_create :generate_default_topic
 
-  attr_accessible :name
+  attr_accessible :name, :default
 
   field :name, :type => String
   field :default, :type => Boolean, :default => false
@@ -19,7 +19,10 @@ class DiscussionGroup
   validates_uniqueness_of :name
 
   def generate_default_topic
-    self.topic = topic || Topic.new(content: "Welcome to #{name}")
+    if self.topic.nil?
+      self.topic = Topic.new(content: "Welcome to #{name}")
+      self.save
+    end
   end
 
   class << self
