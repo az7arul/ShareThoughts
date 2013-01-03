@@ -20,14 +20,19 @@
                       :confirm => 'Are you sure?', :method => :delete,
                       :class => "btn btn-danger btn-mini"
 
-  .topic-list
-    -
-
-
-
   - if current_user.is_admin?
     %hr/
     = link_to 'Create Group', new_discussion_group_path, class: 'btn'
+
+
+  .row
+    .topic-list
+      %hr
+      %strong Select a Topic
+      = select_tag(:dashboard_topic, options_for_select(@topics.collect{|t| [t.content, t.id]}))
+      .messages.span9.well
+        =  render "topics", :topic => @topic
+
 
 
 

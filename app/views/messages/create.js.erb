@@ -1,8 +1,8 @@
-
-<% publish_to "/#{@message.discussion_group_id}" do %>
-  $(".messages").append("<%= escape_javascript(render(:partial => "discussion_groups/message", :locals => {:message => @message})) %>");
-  $('#send_message').attr("value", "");
-
-  $('.messages').scrollTop($(document).height());
+<% unless @message.nil? %>
+  <% publish_to "/#{@message.discussion_group_id}" do %>
+    $(".messages").append("<%= escape_javascript(render(:partial => "discussion_groups/message", :locals => {:message => @message})) %>");
+    $('#send_message').attr("value", "");
+    $('.messages').scrollTop($(document).height());
+  <% end %>
 <% end %>
 

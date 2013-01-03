@@ -6,6 +6,8 @@ class Message
 
   field :content, type: String
 
+  validates_presence_of :content
+
 
   belongs_to :user
   belongs_to :discussion_group

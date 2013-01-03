@@ -19,7 +19,7 @@ class DiscussionGroup
   validates_uniqueness_of :name
 
   def generate_default_topic
-    self.topic = Topic.new(content: "Welcome to #{name}")
+    self.topic = topic || Topic.new(content: "Welcome to #{name}")
   end
 
   class << self

@@ -4,7 +4,7 @@ class DiscussionGroupsController < ApplicationController
 
   def show
     @group = DiscussionGroup.find(params[:id])
-    @messages = @group.messages.limit(5).order_by([:created_at, :desc]).reverse
+    @messages = @group.messages.limit(50).order_by([:created_at, :desc]).reverse
   end
 
   def admin
@@ -56,7 +56,7 @@ class DiscussionGroupsController < ApplicationController
   end
 
   def destroy
-    group = DiscussionGroup.find(params[:id])
+    @group = DiscussionGroup.find(params[:id])
     redirect_with_message notice: "Successfully created new group",
                           alert: 'Failed to remove group',
                           if: -> { group.destroy }

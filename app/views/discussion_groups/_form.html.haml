@@ -4,11 +4,11 @@
     .controls
       = f.text_field :name
 
-  = f.fields_for @topic do |ff|
-    .control-group
-      %label.control-label= ff.label :topic
-      .controls
-        =ff.text_field :content
+  -#= f.fields_for @topic do |ff|
+  -#  .control-group
+  -#    %label.control-label= ff.label :topic
+  -#    .controls
+  -#      =ff.text_field :content
 
   .form-actions
     = f.submit 'Save', class: 'btn btn-primary'
