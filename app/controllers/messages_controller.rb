@@ -3,7 +3,12 @@ class MessagesController < ApplicationController
 
 
   def get_messages_by_topic
-    @topic = Topic.find(params[:topic_id])
+
+    if params[:topic_id] == "0"
+      @topic = nil
+    else
+      @topic = Topic.find(params[:topic_id])
+    end
   end
 
   def create

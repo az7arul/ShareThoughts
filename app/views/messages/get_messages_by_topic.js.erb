@@ -1,0 +1,6 @@
+
+
+$(".messages-list").html("");
+<% unless @topic.nil? %>
+$(".messages-list").html("<%= escape_javascript(render(:partial => "dashboard/topics", :locals => {:topic => @topic})) %>");
+<% end %>
