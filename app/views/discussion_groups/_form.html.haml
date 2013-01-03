@@ -4,6 +4,11 @@
     .controls
       = f.text_field :name
 
+  = f.fields_for @topic do |ff|
+    .control-group
+      %label.control-label= ff.label :content
+      .controls
+        =ff.text_field :content
 
   .form-actions
     = f.submit 'Create', class: 'btn btn-primary'

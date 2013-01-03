@@ -1,5 +1,26 @@
-.page-header
+.page-header.topic-view
   %h1= @group.name
+
+  .topic.well{id: @group.id}
+    %strong Current Topic:
+
+    - if @group.topic.present?
+      = @group.topic.content
+    - else
+      No topic is selected.
+
+  %a.btn.btn-.btn-small.edit-topic{href: '#create-topic',
+                                   'data-toggle' => 'modal'} Edit
+
+  #create-topic.modal.span4{style: 'display: none; width:500px'}
+    .modal-header
+      %button.close{'data-dismiss' => 'modal', 'aria-hidden' => 'true'} &times;
+      %h3 Set new Topic
+
+      .modal-body
+        %textarea.topic-text{name: "topic", placeholder: "Enter a new topic"}
+      .modal-footer
+        .btn.btn-primary.change-topic{'data-dismiss' => 'modal'} Change
 
 .row
   .messages.span9

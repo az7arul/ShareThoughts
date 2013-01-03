@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
 
     if group and current_user.discussion_groups.include?(group)
       @message.discussion_group = group
+      @message.topic = group.topic
     end
 
     @message.save || raise("Invalid parameters")

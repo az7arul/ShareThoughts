@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.discussion_group li {
+.discussion_group li, li.participant-list {
   padding-bottom: 5px;
   padding-top: 5px;
   list-style: none;
@@ -10,13 +10,18 @@
 
 .messages {
   position: fixed;
-  height: 60%;
+  height: 50%;
   overflow-y: scroll;
 }
 
 .participants {
   position: fixed;
   right: 20px;
+}
+
+textarea.topic-text {
+  width: 400px;
+  height: 100px;
 }
 
 .message-box {
@@ -34,5 +39,25 @@
   .btn {
     margin-top: -10px;
   }
+}
 
+.edit-topic {
+  float: left;
+  position: relative;
+  top: -35px;
+  left: 94%;
+}
+
+.topic {
+  background: #20b2aa;
+  color: #fff;
+  font-size: 140%;
+  padding: 10px;
+  margin: 0;
+}
+
+.topic-view {
+  h1 {
+    font-size: 190%;
+  }
 }

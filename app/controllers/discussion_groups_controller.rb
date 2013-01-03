@@ -24,8 +24,23 @@ class DiscussionGroupsController < ApplicationController
                           if: -> { @group.save }
   end
 
+  def update
+    @group = DiscussionGroup.find(params[:id])
+    @group.update_attributes(params[:discussion_group])
+    redirect_with_message notice: 'Successfully Updated',
+                          alert: 'Failed to Update group',
+                          if: -> { @group.save }
+  end
+
+  def edit
+    @group = DiscussionGroup.find(params[:id])
+    @topic = @group.topic || Topic.new
+  end
+
   def new
     @group = DiscussionGroup.new
+    @topic = Topic.new
+
   end
 
   def remove_user
@@ -45,12 +60,6 @@ class DiscussionGroupsController < ApplicationController
     redirect_with_message notice: "Successfully created new group",
                           alert: 'Failed to remove group',
                           if: -> { group.destroy }
-  end
-
-  private
-
-  def ensure_admin!
-    redirect_to root_path unless current_user.is_admin?
   end
 
 end

@@ -1,4 +1,4 @@
-class Message
+class Topic
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -6,12 +6,6 @@ class Message
 
   field :content, type: String
 
-
-  belongs_to :user
+  has_many :messages
   belongs_to :discussion_group
-  belongs_to :topic
-
-  validates :user_id, :presence => true
-  validates :discussion_group_id, :presence => true
-
 end

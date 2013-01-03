@@ -14,9 +14,13 @@
             = link_to "Manage Participants", manage_discussion_group_path(group),
                       :class => "btn btn-primary btn-mini"
 
+            = link_to "Edit", edit_discussion_group_path(group),
+                                  :class => "btn btn-primary btn-mini"
             = link_to "Destroy", discussion_group_path(group),
                       :confirm => 'Are you sure?', :method => :delete,
                       :class => "btn btn-danger btn-mini"
+
+
 
   - if current_user.is_admin?
     %hr/

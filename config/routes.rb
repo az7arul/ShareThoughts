@@ -7,7 +7,13 @@ ShareThoughts::Application.routes.draw do
 
   devise_for :users
 
-  resources :discussion_groups, :only => [:show, :new, :create, :update, :destroy] do
+  resources :topics, :only => [:create] do
+    collection do
+      post :change_topic
+    end
+  end
+
+  resources :discussion_groups do
     collection do
       get :admin
     end
