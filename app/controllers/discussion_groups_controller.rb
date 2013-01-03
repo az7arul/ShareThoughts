@@ -59,7 +59,7 @@ class DiscussionGroupsController < ApplicationController
     @group = DiscussionGroup.find(params[:id])
     redirect_with_message notice: "Successfully created new group",
                           alert: 'Failed to remove group',
-                          if: -> { group.destroy }
+                          if: -> { @group.destroy }
   end
 
 end
