@@ -1,47 +1,44 @@
-.page-header.topic-view
-  %h1= @group.name
+%section
+  .hero-unit.topic-view
+    %h1
+      = @group.name
+      %a.btn.btn-small.edit-topic{href: '#create-topic', 'data-toggle' => 'modal'}
+        Edit Topic
+        %i.icon.icon-pencil
 
-  .topic.well{id: @group.id}
-    %strong Current Topic:
+    %p
+      %dl.dl-horizontal
+        %dt Current Topic
+        %dd.topic{id: @group.id}= @group.topic.present? ? @group.topic.content : 'No topic is selected.'
 
-    - if @group.topic.present?
-      = @group.topic.content
-    - else
-      No topic is selected.
+        %dt Participants
+        %dd= @group.users.map(&:full_name).join(', ')
+      .clearfix
 
-  %a.btn.btn-.btn-small.edit-topic{href: '#create-topic',
-                                   'data-toggle' => 'modal'} Edit
+    #create-topic.modal{style: 'display: none;'}
+      .modal-header
+        %button.close{'data-dismiss' => 'modal', 'aria-hidden' => 'true'} &times;
+        %h3 Set new Topic
 
-  #create-topic.modal.span4{style: 'display: none; width:500px'}
-    .modal-header
-      %button.close{'data-dismiss' => 'modal', 'aria-hidden' => 'true'} &times;
-      %h3 Set new Topic
-
-      .modal-body
-        %textarea.topic-text{name: "topic", placeholder: "Enter a new topic"}
-      .modal-footer
-        .btn.btn-primary.change-topic{'data-dismiss' => 'modal'} Change
-
-.row
-  .messages.span9
-    - @messages.each do |message|
-      = render "discussion_groups/message", :message => message
-
+        .modal-body
+          %textarea.span5.topic-text{name: "topic", placeholder: "Enter a new topic", autofocus: true}
+        .modal-footer
+          .btn.btn-primary.change-topic{'data-dismiss' => 'modal'} Change
+  .clearfix
+%section
+  .messages
+    .span12
+      - @messages.each do |message|
+        = render "discussion_groups/message", :message => message
     .clearfix
 
-  .participants.span3
-    .well.sidebar-nav
-      %h3 Members
-      %ul.nav.nav-list
-        - @group.users.each do |user|
-          %li=user.full_name
-
-.navbar.navbar-fixed-bottom.message-box
-  .container
+%section
+  .message-box.small
     = form_for Message.new, :remote => true  do |f|
       = f.hidden_field :discussion_group_id, value: @group.id
-      = f.text_area :content, :id => "send_message", :rows => "2", class: 'span9'
-      = f.submit 'Send', class: "btn btn-primary btn-large"
+      = f.text_area :content, :id => "send_message",
+                    :rows => "2", class: 'span12',
+                    placeholder: 'Write your message and press Enter or use Shift + Enter for new line.'
 
 = subscribe_to "/#{@group.id}"
 

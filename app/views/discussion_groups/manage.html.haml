@@ -1,23 +1,24 @@
-.page-header
-  %h1=@group.name
+.container-pushup
+  .page-header
+    %h1=@group.name
 
-.row
-  .span6
-    %h4
-      Allowed Users
+  .row
+    .span6
+      %h4
+        Allowed Users
 
-    .well.sidebar-nav
-      %ol.permitted
-        - if @permitted_users.present?
-          - @permitted_users.each do |user|
-            = render "remove_user", :user => user
-
-  .span6
-    %h4
-      Users
-
-    - unless @other_users.nil?
       .well.sidebar-nav
-        %ol.non-permitted
-          - @other_users.each do |user|
-            = render "add_user", :user => user
+        %ol.permitted
+          - if @permitted_users.present?
+            - @permitted_users.each do |user|
+              = render "remove_user", :user => user
+
+    .span6
+      %h4
+        Users
+
+      - unless @other_users.nil?
+        .well.sidebar-nav
+          %ol.non-permitted
+            - @other_users.each do |user|
+              = render "add_user", :user => user

@@ -1,7 +1,10 @@
-.row
-  .span2
-    = message.user.full_name
-  .span6
-    .well.well-small
-      = simple_format message.content
+%h4.author
+  = message.user.full_name
+  - if message.created_at.present?
+    %small
+      %acronym{rel: 'tooltip', title: message.created_at}
+        = distance_of_time_in_words_to_now message.created_at
+        ago
+.well.well-small
+  = simple_format message.content
 

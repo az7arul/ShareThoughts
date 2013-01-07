@@ -15,30 +15,31 @@
 
   %body
     .content-area
-      .navbar.navbar-fixed-top.navbar-inverse
-        .navbar-inner
-          .container
-            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            %a.brand(href="#") ShareThoughts
-            .collapse.nav-collapse
+      %header
+        .navbar.navbar-fixed-top.navbar-inverse
+          .navbar-inner
+            .container
+              %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+                %span.icon-bar
+                %span.icon-bar
+                %span.icon-bar
+              %a.brand(href="#") ShareThoughts
+              .collapse.nav-collapse
 
-              - if user_signed_in?
-                %ul.nav
-                  %li= link_to "Dashboard", dashboard_index_path
+                - if user_signed_in?
+                  %ul.nav
+                    %li= link_to "Dashboard", dashboard_index_path
 
-                %ul.nav.pull-right
-                  %li= link_to "Logout", destroy_user_session_path, :method => :delete
+                  %ul.nav.pull-right
+                    %li= link_to "Logout", destroy_user_session_path, :method => :delete
 
-      .container
+      .container-fluid
         = bootstrap_flash
         = yield
 
     
-    %footer
-      .container
+    %footer.footer
+      .container-fluid
         %p &copy; GENWEB2 LTD. 2012
     /
       Javascripts

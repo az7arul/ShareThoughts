@@ -1,4 +1,4 @@
-.dashboard-home
+.dashboard-home.container-pushup
   .groups-box.span5
     .page-header
       %h1 Available Groups
@@ -28,12 +28,12 @@
 
   .topic-list.span5
     .page-header
-      %h3 Browse Topics
+      %h3 Browse messages history by topics
 
     - options = @topics.collect{|t| [t.content, t.id]}
     - options.unshift(["Select a Topic", 0])
-    = select_tag(:dashboard_topic, options_for_select(options))
-    .messages-list.well.span4
+    = select_tag(:dashboard_topic, options_for_select(options), class: 'span4')
+    .messages-list.well.span4{style: 'display:none'}
 
 .clearfix
 

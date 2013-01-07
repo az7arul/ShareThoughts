@@ -1,5 +1,4 @@
 .dashboard-home {
-
   span.user-name {
     color: green;
   }
@@ -12,6 +11,30 @@
 
     td {
       text-align: right;
+    }
+  }
+
+  .topic-list {
+    .messages-list {
+      margin-left: 0;
+      padding: 10px;
+
+      ul {
+        margin: 0;
+        list-style-type: none;
+
+        li {
+          margin-bottom: 10px;
+          border-bottom: 1px dashed #cccccc;
+
+          .timestamp {
+            font-weight: normal;
+            font-size: 80%;
+            background: none;
+            color: #888;
+          }
+        }
+      }
     }
   }
 }

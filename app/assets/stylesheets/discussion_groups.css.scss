@@ -8,56 +8,50 @@
   list-style: none;
 }
 
-.messages {
-  position: fixed;
-  height: 50%;
-  overflow-y: scroll;
-}
-
-.participants {
-  position: fixed;
-  right: 20px;
-}
-
-textarea.topic-text {
-  width: 400px;
-  height: 100px;
-}
-
-.message-box {
-  background: #fff;
-  padding: 20px 0 0 0;
-  border-top: 2px solid #ccc;
-
-  textarea {
-    background: #ccc;
-    &:hover, &:focus {
-      background: #fff;
-    }
-  }
-
-  .btn {
-    margin-top: -10px;
-  }
-}
-
 .edit-topic {
-  float: left;
-  position: relative;
-  top: -35px;
-  left: 94%;
+
 }
 
-.topic {
-  background: #20b2aa;
-  color: #fff;
-  font-size: 140%;
-  padding: 10px;
+.topic, .members {
+  border: 0;
+  color: #000;
+  padding: 2px 5px 2px 5px;
   margin: 0;
 }
 
 .topic-view {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
   h1 {
     font-size: 190%;
+  }
+}
+
+.messages {
+  height: 400px;
+  overflow-y: scroll;
+
+  .span12 {
+    margin-left: 0;
+  }
+
+  .well-small {
+    margin-bottom: 10px;
+  }
+
+  .author {
+    color: #888;
+  }
+}
+
+.message-box {
+  margin-left: 0;
+  background: lighten(#ccc, 5%);
+  padding: 10px 10px 0 10px;
+
+  textarea {
+    width: 98%;
+    border: 1px solid #888;
   }
 }

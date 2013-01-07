@@ -1,5 +1,5 @@
 <% publish_to "/#{@group.id}" do %>
-    $('.topic').html("<strong>Current Topic:</strong> <%= escape_javascript(@group.topic.content) %>");
+    $('.topic').html(<%= escape_javascript(@group.topic.content) %>);
 <% end %>
 
 

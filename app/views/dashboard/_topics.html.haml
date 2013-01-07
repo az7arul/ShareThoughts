@@ -1,9 +1,14 @@
 %ul
   - topic.messages.each do |message|
-    %li.message-list
+    %li
       %span.user-name
-        = message.user.full_name
+        = truncate(message.user.full_name, length: 10)
+
       %span.message-content
         = " : #{message.content}"
+
+      %span.label.timestamp
+        = distance_of_time_in_words_to_now message.created_at
+        ago
 
 
