@@ -1,6 +1,6 @@
 <% unless @message.nil? %>
   <% publish_to "/#{@message.discussion_group_id}" do %>
-    $(".messages").append("<%= escape_javascript(render(:partial => "discussion_groups/message", :locals => {:message => @message})) %>");
+    $(".messages").append("<%= escape_javascript(render(@message)) %>");
     $('#send_message').attr("value", "");
     $('.messages').scrollTop($(document).height() * 20);
   <% end %>

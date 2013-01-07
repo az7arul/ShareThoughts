@@ -6,7 +6,10 @@
     %table.groups-list{'cell-spacing' => '6px'}
       - @groups.each do |group|
         %tr
-          %th{align: 'left'}= group.name
+          %th{align: 'left'}
+            %acronym{rel: 'tooltip', title: (group.topic.present? ? "Active Topic: #{group.topic.content}" : '')}
+              = group.name
+
           %td
             = link_to "Join", discussion_group_path(group),
                       :class => "btn btn-primary btn-small"
