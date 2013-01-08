@@ -19,6 +19,16 @@ gem "haml-rails"
 gem "private_pub"
 gem 'thin'
 
+group :production do
+  gem 'unicorn'
+end
+
+group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+  gem 'capistrano-unicorn', :require => false
+end
+
 #gem "rspec-rails", ">= 2.11.0", :group => [:development, :test]
 #gem "capybara", ">= 1.1.2", :group => :test
 #gem "database_cleaner", ">= 0.8.0", :group => :test
