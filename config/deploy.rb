@@ -25,10 +25,12 @@ role :app, "192.168.1.19"                          # This may be the same as you
 role :db,  "192.168.1.19", :primary => true # This is where Rails migrations will run
 
 # if you want to clean up old releases on each deploy uncomment this:
-require 'capistrano-unicorn'
 after "deploy:restart", "deploy:cleanup"
 after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
 after 'deploy:restart', 'unicorn:restart'  # app preloaded
+
+
+require 'capistrano-unicorn'
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
