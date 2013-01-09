@@ -33,7 +33,7 @@ require 'capistrano-unicorn'
 namespace :private_pub do
   desc 'Start private pub server'
   task :start, :roles => :app, :except => {:no_release => true} do
-    run "cd #{current_path} && BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec thin -R #{current_path}/private_pub.ru -e production -d -P #{current_path}/tmp/pids/private_pub_server.pid -p 9292 start"
+    run "cd #{current_path} && BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec rackup #{current_path}/private_pub.ru -s thin -E #{app_env} -D -P #{current_path}/tmp/pids/private_pub_server.pid"
   end
 
   desc 'Stop private pub server'
@@ -44,7 +44,7 @@ namespace :private_pub do
   desc 'Restart private pub server'
   task :restart, :roles => :app, :except => {:no_release => true} do
     run "#{try_sudo} kill -s USR2 `cat #{current_path}/tmp/pids/private_pub_server.pid`"
-    run "cd #{current_path} && BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec thin -R #{current_path}/private_pub.ru -e production -d -P #{current_path}/tmp/pids/private_pub_server.pid -p 9292 start"
+    run "cd #{current_path} && BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec rackup #{current_path}/private_pub.ru -E #{app_env} -D -P #{current_path}/tmp/pids/private_pub_server.pid"
   end
 end
 

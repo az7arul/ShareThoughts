@@ -25,6 +25,14 @@ class DiscussionGroup
     end
   end
 
+  def can_join?(user)
+    self.users.include?(user)
+  end
+
+  def cannot_join?(user)
+    !can_join?(user)
+  end
+
   class << self
     def default
       where(default: true).first ||

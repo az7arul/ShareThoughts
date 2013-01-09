@@ -1,37 +1,47 @@
 .dashboard-home.container-pushup
-  .groups-box.span5
+  .groups-box.span8
     .page-header
-      %h1 Available Groups
+      %h1
+        %i.icon-list
+        Available Groups
 
-    %table.groups-list{'cell-spacing' => '6px'}
-      - @groups.each do |group|
-        %tr
-          %th{align: 'left'}
-            %acronym{rel: 'tooltip', title: (group.topic.present? ? "Active Topic: #{group.topic.content}" : '')}
-              = group.name
+    .row
+      %table.span7.groups-list{'cell-spacing' => '6px'}
+        - @groups.each do |group|
+          %tr
+            %th{align: 'left'}
+              %acronym{rel: 'tooltip', title: (group.topic.present? ? "Active Topic: #{group.topic.content}" : '')}
+                = group.name
 
-          %td
-            = link_to "Join", discussion_group_path(group),
-                      :class => "btn btn-primary btn-small"
+            %td
+              - if group.can_join?(current_user)
+                = link_to "Join", discussion_group_path(group),
+                          :class => "btn btn-primary btn-small"
 
-            - if current_user.is_admin?
-              = link_to "Manage Participants", manage_discussion_group_path(group),
-                        :class => "btn btn-primary btn-mini"
+              - if current_user.is_admin?
+                .btn-group
+                  = link_to "Manage Participants", manage_discussion_group_path(group),
+                            :class => "btn btn-mini"
 
-              = link_to "Edit", edit_discussion_group_path(group),
-                                    :class => "btn btn-primary btn-mini"
-              = link_to "Destroy", discussion_group_path(group),
-                        :confirm => 'Are you sure?', :method => :delete,
-                        :class => "btn btn-danger btn-mini"
+                  = link_to "Edit", edit_discussion_group_path(group),
+                                        :class => "btn btn-mini"
+                  = link_to "Destroy", discussion_group_path(group),
+                            :confirm => 'Are you sure?', :method => :delete,
+                            :class => "btn btn-danger btn-mini"
+
 
     - if current_user.is_admin?
       %hr/
-      = link_to 'Create Group', new_discussion_group_path, class: 'btn'
+      %a.btn.btn-primary{href: new_discussion_group_path}
+        %i.icon-plus
+        Create Group
 
 
-  .topic-list.span5
+  .topic-list.span4
     .page-header
-      %h3 Browse messages history by topics
+      %h3
+        %i.icon-inbox
+        Message Archive
 
     - options = @topics.collect{|t| [t.content, t.id]}
     - options.unshift(["Select a Topic", 0])
