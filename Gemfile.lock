@@ -157,7 +157,8 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    therubyracer (0.11.0)
+    therubyracer (0.11.1)
+      libv8 (~> 3.11.8.7)
       ref
     thin (1.5.0)
       daemons (>= 1.0.9)
@@ -190,13 +191,13 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   less-rails
-  libv8 (= 3.11.8.7)
+  libv8
   mongoid (>= 3.0.3)
   private_pub
   rails (= 3.2.9)
   rvm-capistrano
   sass-rails
-  therubyracer (= 0.11.0)
+  therubyracer (= 0.11.1)
   thin
   twitter-bootstrap-rails
   uglifier

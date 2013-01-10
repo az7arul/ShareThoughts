@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
-gem 'libv8', '3.11.8.7'
-gem 'therubyracer', '0.11.0'
+gem 'libv8'
+gem 'therubyracer', '0.11.1'
 
 group :assets do
   gem 'sass-rails'
