@@ -19,10 +19,6 @@ gem "haml-rails"
 gem "private_pub"
 gem 'thin'
 
-group :production do
-  gem 'unicorn'
-end
-
 group :development do
   gem 'capistrano'
   gem 'rvm-capistrano'
