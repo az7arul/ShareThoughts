@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'libv8'
-#gem 'therubyracer'
+gem 'therubyracer'
 
 group :assets do
   gem 'sass-rails'
