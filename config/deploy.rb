@@ -4,13 +4,13 @@ require 'bundler/capistrano'
 set :application, "ShareThoughts"
 
 # SCM related configuration
-set :user, "azhar"
+set :user, "az7ar"
 set :scm, :git
 set :scm_verbose, true
 set :repository,  "https://github.com/genweb2/ShareThoughts.git"
 set :branch, "master"
 set :runner, user
-set :deploy_to, "/home/azhar/share_thoughts"
+set :deploy_to, "/home/az7ar/share_thoughts"
 
 # RVM related configuration
 set :rvm_ruby_string, 'ruby-1.9.3@ShareThoughts'
@@ -20,9 +20,9 @@ set :use_sudo, false
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "192.168.1.19"                          # Your HTTP server, Apache/etc
-role :app, "192.168.1.19"                          # This may be the same as your `Web` server
-role :db,  "192.168.1.19", :primary => true # This is where Rails migrations will run
+role :web, "192.168.1.226"                          # Your HTTP server, Apache/etc
+role :app, "192.168.1.226"                          # This may be the same as your `Web` server
+role :db,  "192.168.1.226", :primary => true # This is where Rails migrations will run
 
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
