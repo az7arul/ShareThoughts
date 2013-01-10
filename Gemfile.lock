@@ -197,7 +197,7 @@ DEPENDENCIES
   rails (= 3.2.9)
   rvm-capistrano
   sass-rails
-  therubyracer (= 0.11.1)
+  therubyracer
   thin
   twitter-bootstrap-rails
   uglifier
