@@ -26,9 +26,9 @@ role :db,  "192.168.1.226", :primary => true # This is where Rails migrations wi
 
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
-after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
+#after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
 
-require 'capistrano-unicorn'
+#require 'capistrano-unicorn'
 
 namespace :private_pub do
   desc 'Start private pub server'
