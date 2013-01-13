@@ -16,6 +16,7 @@ set :deploy_to, "/home/az7ar/share_thoughts"
 set :rvm_ruby_string, 'ruby-1.9.3@ShareThoughts'
 set :rvm_type, :user
 set :use_sudo, false
+set :app_env, 'production'
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
