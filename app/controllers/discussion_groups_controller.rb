@@ -2,7 +2,7 @@ class DiscussionGroupsController < ApplicationController
   before_filter :load_group
   before_filter :ensure_admin!, :except => [:show]
   before_filter :authenticate_user!
-  before_filter :ensure_valid_participant_only!
+  before_filter :ensure_valid_participant_only!, :only => [:show]
 
   def show
     @messages = @group.messages.limit(50).order_by([:created_at, :desc]).reverse
