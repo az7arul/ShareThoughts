@@ -13,9 +13,10 @@ set :runner, user
 set :deploy_to, "/home/az7ar/share_thoughts"
 
 # RVM related configuration
-set :rvm_ruby_string, 'ruby-1.9.3@ShareThoughts'
+set :rvm_ruby_string, 'ruby-1.9.3-p194@ShareThoughts'
 set :rvm_type, :user
 set :use_sudo, false
+set :app_env, 'production'
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -54,10 +55,10 @@ after 'deploy:restart', 'private_pub:restart'
 # these http://github.com/rails/irs_process_scripts
 
 # If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+namespace :deploy do
+   task :start do ; end
+   task :stop do ; end
+   task :restart, :roles => :app, :except => { :no_release => true } do
+     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+   end
+end
